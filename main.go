@@ -25,15 +25,14 @@ type userGrp struct {
 	CreatedAt time.Time `db:"created_at"`
 }
 
-func ormQuery(db sqlbuilder.Database) {
+func ormQueryPage(db sqlbuilder.Database) {
 	res := db.Collection("iam_grp").Find().
 		Where("code like 'SFS_%'").OrderBy("code").
 		Paginate(3).Page(2)
 
 	var grps []userGrp
-	if page, err := dbx.QueryPage(res, &grps); !dbx.HandleErr(err) {
-		log.Printf("Total: %d, Pages: %d, Rows: %v",
-			page.Total(), page.Pages(), grps)
+	if page, err := dbx.FetchPage(res, &grps); !dbx.HandleErr(err) {
+		log.Printf("Page: %v, Rows: %v", page, grps)
 	}
 }
 
@@ -121,5 +120,5 @@ func main() {
 	// statements to stdout.
 	db.SetLogging(true)
 
-	rawQueryRow(db)
+	ormQueryPage(db)
 }

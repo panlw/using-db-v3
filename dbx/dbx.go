@@ -53,20 +53,20 @@ type (
 		Pages() uint
 	}
 	page struct {
-		totol uint64
+		total uint64
 		pages uint
 	}
 )
 
 func (p *page) Total() uint64 {
-	return p.totol
+	return p.total
 }
 func (p *page) Pages() uint {
 	return p.pages
 }
 
-// QueryPage 分页查询
-func QueryPage(res db.Result, dest interface{}) (Page, error) {
+// FetchPage 获取分页结果
+func FetchPage(res db.Result, dest interface{}) (Page, error) {
 	if err := res.All(dest); err != nil {
 		return nil, err
 	}
@@ -80,6 +80,7 @@ func QueryPage(res db.Result, dest interface{}) (Page, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	return &page{total, pages}, nil
 }
 
@@ -90,6 +91,7 @@ func QueryRow(stmt *sql.Stmt, dest interface{}, args ...interface{}) error {
 	if err != nil {
 		return err
 	}
+
 	return sqlbuilder.NewIterator(rows).One(dest)
 }
 
@@ -100,5 +102,6 @@ func QueryRows(stmt *sql.Stmt, dest interface{}, args ...interface{}) error {
 	if err != nil {
 		return err
 	}
+
 	return sqlbuilder.NewIterator(rows).All(dest)
 }
