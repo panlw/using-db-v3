@@ -1,0 +1,5 @@
+github.com/go-sql-driver/mysql v1.5.0 h1:ozyZYNQW3x3HtqT1jira07DN2PArx2v7/mN66gGcHOs=
+github.com/go-sql-driver/mysql v1.5.0/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LBy8hT2VhHyBg=
+upper.io/db.v3 v1.0.1 h1:oWahxQdW+oh7/jn/dIbXqaXMiI0jNdjVza6E93SvJeE=
+upper.io/db.v3 v3.6.4+incompatible h1:ZWpoGpfyvRDxMW1lYLBwwSurzodIvAUP4aYBsH/ePiY=
+upper.io/db.v3 v3.6.4+incompatible/go.mod h1:FgTdD24eBjJAbPKsQSiHUNgXjOR4Lub3u1UMHSIh82Y=
